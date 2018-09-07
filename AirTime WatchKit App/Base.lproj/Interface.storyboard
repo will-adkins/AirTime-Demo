@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14113" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14033"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="AirTime_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="Force Touch to Begin" id="Nvw-NQ-Lat" userLabel="TitleLabel"/>
+                        <label alignment="left" text="Jumps:" id="uuH-gz-xnW" userLabel="JumpLabel"/>
+                        <label alignment="left" text="0" id="ml3-aA-cm3" userLabel="JumpCountLabel"/>
+                    </items>
+                    <menu key="menu" id="FZX-DX-flU">
+                        <items>
+                            <menuItem title="Start Workout" icon="accept" id="tZi-gy-upF">
+                                <connections>
+                                    <action selector="start" destination="AgC-eL-Hgc" id="v7L-nG-1cb"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Stop Workout" icon="decline" id="fAA-DR-h0Z">
+                                <connections>
+                                    <action selector="stop" destination="AgC-eL-Hgc" id="z4a-07-dtB"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="jumpCountLabel" destination="ml3-aA-cm3" id="VZ0-py-WJl"/>
+                        <outlet property="titleLabel" destination="Nvw-NQ-Lat" id="1m3-Ke-zt0"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="AirTime_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>
