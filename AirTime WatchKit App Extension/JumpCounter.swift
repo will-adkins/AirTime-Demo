@@ -90,4 +90,11 @@ class JumpCounter {
         }
     }
     
+    func resetAllState() {
+        buffer.removeAll()
+        initialSum = nil
+        currentPeak = nil
+        jumpTestCounter = 0
+        jumps = 0
+    }
 }

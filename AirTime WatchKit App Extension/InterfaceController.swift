@@ -70,6 +70,7 @@ class InterfaceController: WKInterfaceController, WorkoutManagerDelegate {
     
     func didUpdateJumpCount(_ manager: WorkoutManager, jumpCount: Int) {
         DispatchQueue.main.async {
+            self.jumps = jumpCount
             self.jumpCountLabel.setText("\(jumpCount)")
         }
     }
@@ -78,6 +79,7 @@ class InterfaceController: WKInterfaceController, WorkoutManagerDelegate {
     
     func updateLabels() {
         if active {
+            jumpCountLabel.setText("\(jumps)")
             //            jumpCountLabel.setText("\(backhandCount)")
         }
     }

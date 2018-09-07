@@ -128,6 +128,7 @@
 		1CF4EA802142BD1900B35F39 /* AirTime WatchKit App Extension */ = {
 			isa = PBXGroup;
 			children = (
+				1C0F2B5A21417D16000B70A1 /* watch-data.csv */,
 				1CF4EA962142C07600B35F39 /* JumpCounter.swift */,
 				1CF4EA982142C0AD00B35F39 /* MotionManager.swift */,
 				1CF4EA992142C0AD00B35F39 /* WorkoutManager.swift */,
@@ -165,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				1CF4EA6C2142B5DF00B35F39 /* JumpCounter.swift */,
-				1C0F2B5A21417D16000B70A1 /* watch-data.csv */,
 				508C6653214163160059C591 /* AppDelegate.swift */,
 				508C6655214163160059C591 /* ViewController.swift */,
 				508C6657214163170059C591 /* Main.storyboard */,
