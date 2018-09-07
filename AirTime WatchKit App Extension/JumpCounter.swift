@@ -31,7 +31,11 @@ class JumpCounter {
         //  Get sum of squares of components
         let sumOfSquares = sumSquares(arr: [x, y, z])
         
+<<<<<<< HEAD
         incrementJump?(Int(sumOfSquares))
+=======
+        incrementJump(Int(sumOfSquares)!)
+>>>>>>> 249881d5b6892237b102746404db92592d84f136
         
         //  If there is a current peak, continue adding to buffer to get next normalized data point
         if currentPeak != nil {
