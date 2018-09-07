@@ -16,6 +16,8 @@ func sumSquares(arr: [Double]) -> Double {
 
 class JumpCounter {
     
+    let upperBound = 20.0
+    let lowerBound = 2.0
     let frequency = 60
     let bufferSize = 12
     var buffer = [Double]()
@@ -28,6 +30,8 @@ class JumpCounter {
     func input(x: Double, y: Double, z: Double) {
         //  Get sum of squares of components
         let sumOfSquares = sumSquares(arr: [x, y, z])
+        
+        incrementJump(Int(sumOfSquares))
         
         //  If there is a current peak, continue adding to buffer to get next normalized data point
         if currentPeak != nil {
@@ -47,8 +51,8 @@ class JumpCounter {
                 if let initialSum = initialSum {
                     let normalized = sum - initialSum
                     
-                    //  If normalized is greater than 20, set it as the currentPeak
-                    if normalized >= 20 {
+                    //  If normalized is greater than upperBound, set it as the currentPeak
+                    if normalized >= upperBound {
                         currentPeak = normalized
                     }
                 } else {
@@ -68,7 +72,7 @@ class JumpCounter {
             let normalized = sum - initialSum!
             
             //  Jump found
-            if normalized <= -2 {
+            if normalized <= lowerBound {
                 jumps += 1
                 incrementJump?(jumps)
                 
