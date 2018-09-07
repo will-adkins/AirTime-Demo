@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0F2B5921417C0E000B70A1 /* PogoCountAlg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0F2B5821417C0E000B70A1 /* PogoCountAlg.swift */; };
+		1C0F2B5B21417D16000B70A1 /* watch-data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1C0F2B5A21417D16000B70A1 /* watch-data.csv */; };
+		1CF4EA6D2142B5DF00B35F39 /* JumpCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF4EA6C2142B5DF00B35F39 /* JumpCounter.swift */; };
 		508C6654214163160059C591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C6653214163160059C591 /* AppDelegate.swift */; };
 		508C6656214163160059C591 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C6655214163160059C591 /* ViewController.swift */; };
 		508C6659214163170059C591 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508C6657214163170059C591 /* Main.storyboard */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C0F2B5821417C0E000B70A1 /* PogoCountAlg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PogoCountAlg.swift; sourceTree = "<group>"; };
+		1C0F2B5A21417D16000B70A1 /* watch-data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "watch-data.csv"; sourceTree = "<group>"; };
+		1CF4EA6C2142B5DF00B35F39 /* JumpCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpCounter.swift; sourceTree = "<group>"; };
 		508C6650214163160059C591 /* AirTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		508C6653214163160059C591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		508C6655214163160059C591 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,12 +60,15 @@
 		508C6652214163160059C591 /* AirTime */ = {
 			isa = PBXGroup;
 			children = (
+				1CF4EA6C2142B5DF00B35F39 /* JumpCounter.swift */,
+				1C0F2B5A21417D16000B70A1 /* watch-data.csv */,
 				508C6653214163160059C591 /* AppDelegate.swift */,
 				508C6655214163160059C591 /* ViewController.swift */,
 				508C6657214163170059C591 /* Main.storyboard */,
 				508C665A214163170059C591 /* Assets.xcassets */,
 				508C665C214163170059C591 /* LaunchScreen.storyboard */,
 				508C665F214163170059C591 /* Info.plist */,
+				1C0F2B5821417C0E000B70A1 /* PogoCountAlg.swift */,
 			);
 			path = AirTime;
 			sourceTree = "<group>";
@@ -124,6 +133,7 @@
 			files = (
 				508C665E214163170059C591 /* LaunchScreen.storyboard in Resources */,
 				508C665B214163170059C591 /* Assets.xcassets in Resources */,
+				1C0F2B5B21417D16000B70A1 /* watch-data.csv in Resources */,
 				508C6659214163170059C591 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,8 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CF4EA6D2142B5DF00B35F39 /* JumpCounter.swift in Sources */,
 				508C6656214163160059C591 /* ViewController.swift in Sources */,
 				508C6654214163160059C591 /* AppDelegate.swift in Sources */,
+				1C0F2B5921417C0E000B70A1 /* PogoCountAlg.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
