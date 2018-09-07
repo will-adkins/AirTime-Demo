@@ -23,6 +23,7 @@ class InterfaceController: WKInterfaceController, WorkoutManagerDelegate {
     override init() {
         super.init()
         workoutManager.delegate = self
+        print("interface init")
     }
     
     // MARK: WKInterfaceController
@@ -42,6 +43,7 @@ class InterfaceController: WKInterfaceController, WorkoutManagerDelegate {
 
     @IBAction func start() {
         titleLabel.setText("Workout started")
+        print("start in interface")
         workoutManager.startWorkout()
     }
     

@@ -32,11 +32,13 @@ class WorkoutManager: MotionManagerDelegate {
     
     init() {
         motionManager.delegate = self
+        print("workout manager")
     }
 
     // MARK: WorkoutManager
     
     func startWorkout() {
+        print("start in workout")
         // If we have already started the workout, then do nothing.
         if (session != nil) {
             return

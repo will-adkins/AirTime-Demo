@@ -86,7 +86,7 @@ class MotionManager {
         queue.maxConcurrentOperationCount = 1
         queue.name = "MotionManagerQueue"
         jumpCounter.incrementJump = updateJumpCountDelegate
-        
+        print("motion manager init")
     }
 
     // MARK: Motion Manager
@@ -123,7 +123,7 @@ class MotionManager {
     func processDeviceMotion(_ deviceMotion: CMDeviceMotion) {
         let gravity = deviceMotion.gravity
         
-        
+        delegate?.didUpdateJumpCount(self, jumpCount: Int(gravity.x))
         jumpCounter.input(x: gravity.x, y: gravity.y, z: gravity.z)
     }
 
