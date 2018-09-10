@@ -26,8 +26,8 @@ class InterfaceController: WKInterfaceController {
     let queue = OperationQueue()
     let healthStore = HKHealthStore()
     var session: HKWorkoutSession?
-    let upperBound = 6.0
-    let lowerBound = -2.0
+    let upperBound = 20.0
+    let lowerBound = 2.0
     let sampleRate = 60
     var sampleInterval: Int {
         get { return 1 / sampleRate }
