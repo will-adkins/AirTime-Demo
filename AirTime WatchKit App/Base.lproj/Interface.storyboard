@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14113" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14113" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aSh-tN-X4M">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,59 +9,49 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14033"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
+        <!--InitialInterfaceController-->
+        <scene sceneID="k3J-xs-xwu">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="AirTime_WatchKit_App" customModuleProvider="target">
+                <controller identifier="InitialInterfaceController" id="aSh-tN-X4M" customClass="InitialInterfaceController" customModule="AirTime_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Force Touch to Begin" id="Nvw-NQ-Lat" userLabel="TitleLabel"/>
-                        <label alignment="left" text="Jumps:" id="uuH-gz-xnW" userLabel="JumpLabel"/>
-                        <label alignment="left" text="0" id="ml3-aA-cm3" userLabel="JumpCountLabel"/>
+                        <button width="1" height="1" alignment="left" title="Start Jumping" id="5ny-KY-6Hx">
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="backgroundColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="startTapped" destination="aSh-tN-X4M" id="6hM-Ob-aye"/>
+                            </connections>
+                        </button>
                     </items>
-                    <menu key="menu" id="FZX-DX-flU">
-                        <items>
-                            <menuItem title="Start Workout" icon="accept" id="tZi-gy-upF">
-                                <connections>
-                                    <action selector="start" destination="AgC-eL-Hgc" id="v7L-nG-1cb"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Stop Workout" icon="decline" id="fAA-DR-h0Z">
-                                <connections>
-                                    <action selector="stop" destination="AgC-eL-Hgc" id="z4a-07-dtB"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="626"/>
+        </scene>
+        <!--ChallengeInterfaceController-->
+        <scene sceneID="LVs-7l-M5I">
+            <objects>
+                <controller identifier="ChallengeInterfaceController" id="6Rc-ck-cV4" customClass="ChallengeInterfaceController" customModule="AirTime_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <button width="1" height="0.5" alignment="left" title="0" id="bbp-J9-8A0">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" type="system" pointSize="40"/>
+                            <connections>
+                                <action selector="incrementJumpLabel" destination="6Rc-ck-cV4" id="E4b-cy-B4P"/>
+                            </connections>
+                        </button>
+                        <button width="1" height="0.5" alignment="left" verticalAlignment="bottom" title="Done" id="R7V-jC-DNO">
+                            <color key="backgroundColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="stop" destination="6Rc-ck-cV4" id="XpV-H4-8Ms"/>
+                            </connections>
+                        </button>
+                    </items>
                     <connections>
-                        <outlet property="jumpCountLabel" destination="ml3-aA-cm3" id="VZ0-py-WJl"/>
-                        <outlet property="titleLabel" destination="Nvw-NQ-Lat" id="1m3-Ke-zt0"/>
+                        <outlet property="jumpLabel" destination="bbp-J9-8A0" id="flU-LV-TPZ"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
-        </scene>
-        <!--Static Notification Interface Controller-->
-        <scene sceneID="AEw-b0-oYE">
-            <objects>
-                <notificationController id="YCC-NB-fut">
-                    <items>
-                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
-                    </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
-                    <connections>
-                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
-                    </connections>
-                </notificationController>
-            </objects>
-            <point key="canvasLocation" x="220" y="643"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="ZPc-GJ-vnh">
-            <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="AirTime_WatchKit_App" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="468" y="643"/>
+            <point key="canvasLocation" x="474" y="626"/>
         </scene>
     </scenes>
 </document>

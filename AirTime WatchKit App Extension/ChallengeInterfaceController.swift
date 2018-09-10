@@ -12,12 +12,12 @@ import HealthKit
 import CoreMotion
 
 
-class InterfaceController: WKInterfaceController {
+class ChallengeInterfaceController: WKInterfaceController {
 
     //  MARK: - Outlets
     
-    @IBOutlet var titleLabel: WKInterfaceLabel!
-    @IBOutlet var jumpCountLabel: WKInterfaceLabel!
+    @IBOutlet var jumpLabel: WKInterfaceButton!
+    
     
     //  MARK: Properties
     
@@ -36,6 +36,7 @@ class InterfaceController: WKInterfaceController {
         get { return sampleRate / 5 }
     }
     var jumpCounter: JumpCounter?
+    var numJumps = 0
     
     //  MARK: Initialization
    
@@ -43,6 +44,7 @@ class InterfaceController: WKInterfaceController {
         super.init()
         queue.maxConcurrentOperationCount = 1
         queue.name = "MotionManagerQueue"
+        self.start()
     }
     
     // MARK: WKInterfaceController
@@ -57,9 +59,9 @@ class InterfaceController: WKInterfaceController {
         active = false
     }
 
-    @IBAction func start() {
-        titleLabel.setText("Workout started")
-        jumpCountLabel.setText("\(0)")
+    func start() {
+        numJumps = 0
+        jumpLabel.setTitle("\(numJumps)")
         
         // If we have already started the workout, then do nothing.
         if (session != nil) {
@@ -100,11 +102,9 @@ class InterfaceController: WKInterfaceController {
     }
     
     @IBAction func stop() {
-        titleLabel.setText("Workout stopped")
         if (session == nil) {
             return
         }
-        
         // Stop the device motion updates and workout session.
         if motionManager.isDeviceMotionAvailable {
             motionManager.stopDeviceMotionUpdates()
@@ -117,13 +117,23 @@ class InterfaceController: WKInterfaceController {
         //  Clear jump counter
         jumpCounter = nil
         
+        jumpLabel.setTitle("\(0)")
         
-        jumpCountLabel.setText("\(0)")
+        //send numJump to phone
+        
+        WKInterfaceController.reloadRootControllers(withNames: ["InitialInterfaceController"], contexts: [])
     }
     
     //  MARK: Methods
     
     func jumpFound(jumps: Int) {
-        jumpCountLabel.setText("\(jumps)")
+        numJumps = jumps
+        jumpLabel.setTitle("\(numJumps)")
     }
+    
+    @IBAction func incrementJumpLabel() {
+        numJumps = numJumps + 1
+        jumpLabel.setTitle("\(numJumps)")
+    }
+    
 }
