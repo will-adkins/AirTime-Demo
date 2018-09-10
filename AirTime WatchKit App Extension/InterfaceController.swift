@@ -8,22 +8,41 @@
 
 import WatchKit
 import Foundation
+import HealthKit
+import CoreMotion
 
 
-class InterfaceController: WKInterfaceController, WorkoutManagerDelegate {
+class InterfaceController: WKInterfaceController {
 
+    //  MARK: - Outlets
+    
     @IBOutlet var titleLabel: WKInterfaceLabel!
     @IBOutlet var jumpCountLabel: WKInterfaceLabel!
     
-    let workoutManager = WorkoutManager()
-    var active = false
-    var jumps = 0
+    //  MARK: Properties
     
+    var active = false
+    let motionManager = CMMotionManager()
+    let queue = OperationQueue()
+    let healthStore = HKHealthStore()
+    var session: HKWorkoutSession?
+    let upperBound = 6.0
+    let lowerBound = -2.0
+    let sampleRate = 60
+    var sampleInterval: Int {
+        get { return 1 / sampleRate }
+    }
+    var bufferSize: Int {
+        get { return sampleRate / 5 }
+    }
+    var jumpCounter: JumpCounter?
+    
+    //  MARK: Initialization
    
     override init() {
         super.init()
-        workoutManager.delegate = self
-        print("interface init")
+        queue.maxConcurrentOperationCount = 1
+        queue.name = "MotionManagerQueue"
     }
     
     // MARK: WKInterfaceController
@@ -31,9 +50,6 @@ class InterfaceController: WKInterfaceController, WorkoutManagerDelegate {
     override func willActivate() {
         super.willActivate()
         active = true
-        
-        // On re-activation, update with the cached values.
-        updateLabels()
     }
     
     override func didDeactivate() {
@@ -43,46 +59,72 @@ class InterfaceController: WKInterfaceController, WorkoutManagerDelegate {
 
     @IBAction func start() {
         titleLabel.setText("Workout started")
-        print("start in interface")
-        workoutManager.startWorkout()
+        jumpCountLabel.setText("\(0)")
+        
+        // If we have already started the workout, then do nothing.
+        if (session != nil) {
+            return
+        }
+        
+        // Configure the workout session.
+        let workoutConfiguration = HKWorkoutConfiguration()
+        workoutConfiguration.activityType = .play
+        workoutConfiguration.locationType = .outdoor
+        
+        do {
+            session = try HKWorkoutSession(configuration: workoutConfiguration)
+        } catch {
+            fatalError("Unable to create the workout session!")
+        }
+        
+        // Start the workout session and device motion updates.
+        healthStore.start(session!)
+        
+        if !motionManager.isDeviceMotionAvailable {
+            print("Device Motion is not available.")
+            return
+        }
+        
+        // Reset everything when we start.
+        jumpCounter = JumpCounter(upperBound: upperBound, lowerBound: lowerBound, sampleRate: sampleRate, bufferSize: bufferSize, jumpFound: jumpFound)
+        
+        motionManager.deviceMotionUpdateInterval = TimeInterval(sampleInterval)
+        motionManager.startAccelerometerUpdates(to: queue) { deviceMotion, error in
+            if error != nil {
+                print("Encountered error: \(error!)")
+            }
+            if let deviceMotion = deviceMotion {
+                self.jumpCounter?.input(x: deviceMotion.acceleration.x, y: deviceMotion.acceleration.y, z: deviceMotion.acceleration.z)
+            }
+        }
     }
     
     @IBAction func stop() {
         titleLabel.setText("Workout stopped")
-        workoutManager.stopWorkout()
+        if (session == nil) {
+            return
+        }
+        
+        // Stop the device motion updates and workout session.
+        if motionManager.isDeviceMotionAvailable {
+            motionManager.stopDeviceMotionUpdates()
+        }
+        healthStore.end(session!)
+        
+        // Clear the workout session.
+        session = nil
+        
+        //  Clear jump counter
+        jumpCounter = nil
+        
+        
+        jumpCountLabel.setText("\(0)")
     }
     
-    // MARK: WorkoutManagerDelegate
+    //  MARK: Methods
     
-    func didUpdateForehandSwingCount(_ manager: WorkoutManager, forehandCount: Int) {
-        /// Serialize the property access and UI updates on the main queue.
-        DispatchQueue.main.async {
-            //            self.forehandCount = forehandCount
-            self.updateLabels()
-        }
-    }
-    
-    func didUpdateBackhandSwingCount(_ manager: WorkoutManager, backhandCount: Int) {
-        /// Serialize the property access and UI updates on the main queue.
-        DispatchQueue.main.async {
-            //            self.backhandCount = backhandCount
-            self.updateLabels()
-        }
-    }
-    
-    func didUpdateJumpCount(_ manager: WorkoutManager, jumpCount: Int) {
-        DispatchQueue.main.async {
-            self.jumps = jumpCount
-            self.jumpCountLabel.setText("\(jumpCount)")
-        }
-    }
-    
-    // MARK: Convenience
-    
-    func updateLabels() {
-        if active {
-            jumpCountLabel.setText("\(jumps)")
-            //            jumpCountLabel.setText("\(backhandCount)")
-        }
+    func jumpFound(jumps: Int) {
+        print("setting jumps: \(jumps)")
+        jumpCountLabel.setText("\(jumps)")
     }
 }

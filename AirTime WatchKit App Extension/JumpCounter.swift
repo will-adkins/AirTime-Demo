@@ -9,28 +9,48 @@
 import Foundation
 
 func sumSquares(arr: [Double]) -> Double {
-    var sum = 0.0
-    arr.forEach { sum += pow($0, 2) }
-    return sqrt(sum)
+    return sqrt(arr.reduce(0.0) { $0 + pow($1, 2) })
 }
+
+typealias JumpFoundCallback = (_ jump: Int) -> Void
 
 class JumpCounter {
     
-    let upperBound = 20.0
-    let lowerBound = 2.0
-    let frequency = 60
-    let bufferSize = 12
+    //  MARK: Properties
+    
+    let upperBound: Double
+    let lowerBound: Double
+    let sampleRate: Int
+    let bufferSize: Int
+    let jumpFound: JumpFoundCallback
+    
     var buffer = [Double]()
     var initialSum: Double?
     var currentPeak: Double?
     var jumpTestCounter = 0
-    var incrementJump: ((_ jump: Int) -> Void)?
     var jumps = 0
     
+    //  MARK:  Initialization
+    
+    init(
+        upperBound: Double,
+        lowerBound: Double,
+        sampleRate: Int,
+        bufferSize: Int,
+        jumpFound: @escaping JumpFoundCallback
+        ) {
+        self.upperBound = upperBound
+        self.lowerBound = lowerBound
+        self.sampleRate = sampleRate
+        self.bufferSize = bufferSize
+        self.jumpFound = jumpFound
+    }
+    
+    //  MARK: Methods
     func input(x: Double, y: Double, z: Double) {
+        
         //  Get sum of squares of components
         let sumOfSquares = sumSquares(arr: [x, y, z])
-        incrementJump?(Int(sumOfSquares))
         
         //  If there is a current peak, continue adding to buffer to get next normalized data point
         if currentPeak != nil {
@@ -58,7 +78,7 @@ class JumpCounter {
                     initialSum = sum
                 }
                 
-                buffer.removeAll()
+                buffer.removeFirst()
             }
         }
     }
@@ -73,14 +93,14 @@ class JumpCounter {
             //  Jump found
             if normalized <= lowerBound {
                 jumps += 1
-                incrementJump?(jumps)
+                jumpFound(jumps)
                 
                 currentPeak = nil
             } else {
                 
                 jumpTestCounter += 1
                 
-                if (jumpTestCounter >= frequency) {
+                if (jumpTestCounter >= sampleRate) {
                     
                     currentPeak = nil
                     jumpTestCounter = 0
@@ -91,13 +111,5 @@ class JumpCounter {
         } else {
             buffer.append(sumOfSquares)
         }
-    }
-    
-    func resetAllState() {
-        buffer.removeAll()
-        initialSum = nil
-        currentPeak = nil
-        jumpTestCounter = 0
-        jumps = 0
     }
 }
