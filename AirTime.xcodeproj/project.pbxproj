@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C0F2B5921417C0E000B70A1 /* PogoCountAlg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0F2B5821417C0E000B70A1 /* PogoCountAlg.swift */; };
 		1C0F2B5B21417D16000B70A1 /* watch-data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1C0F2B5A21417D16000B70A1 /* watch-data.csv */; };
 		1CF4EA6D2142B5DF00B35F39 /* JumpCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF4EA6C2142B5DF00B35F39 /* JumpCounter.swift */; };
 		1CF4EA742142BD1700B35F39 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CF4EA722142BD1700B35F39 /* Interface.storyboard */; };
@@ -19,8 +18,6 @@
 		1CF4EA882142BD1A00B35F39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CF4EA872142BD1A00B35F39 /* Assets.xcassets */; };
 		1CF4EA8D2142BD1A00B35F39 /* AirTime WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1CF4EA702142BD1700B35F39 /* AirTime WatchKit App.app */; };
 		1CF4EA972142C07600B35F39 /* JumpCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF4EA962142C07600B35F39 /* JumpCounter.swift */; };
-		1CF4EA9A2142C0AD00B35F39 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF4EA982142C0AD00B35F39 /* MotionManager.swift */; };
-		1CF4EA9B2142C0AD00B35F39 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF4EA992142C0AD00B35F39 /* WorkoutManager.swift */; };
 		508C6654214163160059C591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C6653214163160059C591 /* AppDelegate.swift */; };
 		508C6656214163160059C591 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C6655214163160059C591 /* ViewController.swift */; };
 		508C6659214163170059C591 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508C6657214163170059C591 /* Main.storyboard */; };
@@ -71,7 +68,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1C0F2B5821417C0E000B70A1 /* PogoCountAlg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PogoCountAlg.swift; sourceTree = "<group>"; };
 		1C0F2B5A21417D16000B70A1 /* watch-data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "watch-data.csv"; sourceTree = "<group>"; };
 		1CF4EA6C2142B5DF00B35F39 /* JumpCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpCounter.swift; sourceTree = "<group>"; };
 		1CF4EA702142BD1700B35F39 /* AirTime WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AirTime WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,8 +82,6 @@
 		1CF4EA892142BD1A00B35F39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CF4EA8A2142BD1A00B35F39 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		1CF4EA962142C07600B35F39 /* JumpCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpCounter.swift; sourceTree = "<group>"; };
-		1CF4EA982142C0AD00B35F39 /* MotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
-		1CF4EA992142C0AD00B35F39 /* WorkoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		508C6650214163160059C591 /* AirTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		508C6653214163160059C591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		508C6655214163160059C591 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,8 +124,6 @@
 			children = (
 				1C0F2B5A21417D16000B70A1 /* watch-data.csv */,
 				1CF4EA962142C07600B35F39 /* JumpCounter.swift */,
-				1CF4EA982142C0AD00B35F39 /* MotionManager.swift */,
-				1CF4EA992142C0AD00B35F39 /* WorkoutManager.swift */,
 				1CF4EA812142BD1900B35F39 /* InterfaceController.swift */,
 				1CF4EA832142BD1900B35F39 /* ExtensionDelegate.swift */,
 				1CF4EA852142BD1900B35F39 /* NotificationController.swift */,
@@ -172,7 +164,6 @@
 				508C665A214163170059C591 /* Assets.xcassets */,
 				508C665C214163170059C591 /* LaunchScreen.storyboard */,
 				508C665F214163170059C591 /* Info.plist */,
-				1C0F2B5821417C0E000B70A1 /* PogoCountAlg.swift */,
 			);
 			path = AirTime;
 			sourceTree = "<group>";
@@ -316,11 +307,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CF4EA972142C07600B35F39 /* JumpCounter.swift in Sources */,
-				1CF4EA9A2142C0AD00B35F39 /* MotionManager.swift in Sources */,
 				1CF4EA862142BD1900B35F39 /* NotificationController.swift in Sources */,
 				1CF4EA842142BD1900B35F39 /* ExtensionDelegate.swift in Sources */,
 				1CF4EA822142BD1900B35F39 /* InterfaceController.swift in Sources */,
-				1CF4EA9B2142C0AD00B35F39 /* WorkoutManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +320,6 @@
 				1CF4EA6D2142B5DF00B35F39 /* JumpCounter.swift in Sources */,
 				508C6656214163160059C591 /* ViewController.swift in Sources */,
 				508C6654214163160059C591 /* AppDelegate.swift in Sources */,
-				1C0F2B5921417C0E000B70A1 /* PogoCountAlg.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

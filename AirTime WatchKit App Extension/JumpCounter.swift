@@ -112,4 +112,10 @@ class JumpCounter {
             buffer.append(sumOfSquares)
         }
     }
+    
+    func sumSquares(arr: [Double]) -> Double {
+        var sum = 0.0
+        arr.forEach { sum += pow($0, 2) }
+        return sqrt(sum)
+    }
 }
